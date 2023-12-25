@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+</head>
+<body class="text-center" style="background-image: url(myimage/lov.jpg); background-size: 50%;">
+    <h1 style="color: white;">Love Calculator</h1>
+    <button class="btn btn-outline-success" onclick="play()">Play Song</button>
+   <div>
+    <input type="text" class="my-5 mx-2 p-2 w-25" placeholder="Player Name😍😘💕" id="playername">
+    <input type="text" class="my-5 mx-2 p-2 w-25" placeholder="Lover Name😍😍❤" id="lovername"><br>
+    <button class="btn btn-outline-light mb-1 w-25" onclick="lovecal()">Calculate</button>
+   </div>
+   <center>
+    <section class="border border-outline-light" style=" width: 700px; margin-top: 40px; border-radius: 30px; background-color: white;" >
+      <div id="disp" style="color: black;"></div>
+      <div id="display" style="color: black;"></div><br><br>
+      <h5>HISTORY</h5>
+      <div id="dis"></div>
+      <button onclick="clearAll()" class="btn btn-outline-primary" style="margin-bottom: 40px; margin-top: 10px;">Clear All</button>
+    </section> 
+   </center>
+
+    <script>
+      
+      let displayBox = document.getElementById("dis")
+      //displayBox.innerHTML = localStorage.getItem()
+        // function but() {
+        //     allProducts.splice(index, 1)
+        //     displayProducts();
+        // }
+        
+      var song = new Audio("music/Alec_Benjamin_-_Let_Me_Down_Slowly.mp3")
+        function play() {
+          song.play()
+        }
+
+        function lovecal() {
+          var ans = Math.round(Math.random()*100) 
+          let arr = []
+          let obj = {}
+          console.log(arr)
+          
+          obj.playerName = playername.value
+          obj.loverName = lovername.value
+          obj.randNumber = ans
+          arr.push(obj)
+            console.log(arr)
+            var song = new Audio ("music/mixkit-big-crowd-laughing-460.wav")
+            var song1 = new Audio("music/MKUP6H6-male-hmm-interesting.mp3")
+            var song2 = new Audio("music/mixkit-conference-audience-clapping-strongly-476.wav")
+            var song3 = new Audio("music/austine.mp3")
+            var song4 = new Audio("music/okaka.mp3")
+
+          if (playername.value != '' || lovername.value !='') {
+            disp.innerHTML = `${ans}%`
+           for (let i = 0; i < arr.length; i++) {
+            dis.innerHTML += `<div style="display: flex;">
+                                    <div style="border: 1px solid pink; width: 33.3%;">${arr[i].playerName}</div>
+                                    <div style="border: 1px solid pink; width: 33.3%;">${arr[i].loverName}</div>
+                                    <div style="border: 1px solid pink; width: 33.3%;">${arr[i].randNumber}</div>
+
+                              </div>`
+            // arr = [];
+            localStorage.lov = JSON.stringify(dis.innerHTML)
+            
+           }
+            localStorage.lov= JSON.stringify(dis.innerHTML);
+            playername.value = ""
+            lovername.value = ""
+          }else{
+            alert("Enter your Name")
+          } if (ans >=0 && ans < 50) {
+            display.innerHTML = "Don't even try it  "
+          } else if (ans >=50 && ans <60) {
+            display.innerHTML = "You are not compatible, E shock You"
+            song.play()
+          } else if (ans >= 60 && ans <70) {
+            display.innerHTML = "You must be Watchful"
+            song1.play()
+          } else if (ans >= 70 && ans <80){
+            display.innerHTML = "You are a good Match"
+            song2.play()
+          } else if (ans >= 80 && ans <90){
+            display.innerHTML = "You are a Perfect Match"
+            song3.play()
+            } else if (ans >= 90 && ans <100){
+              display.innerHTML = "You are an Excellent Match"
+              song4.play()
+            }
+           
+           
+    //  console.log(localstorage.getItem('lov'))
+
+        }
+      dis.innerHTML= JSON.parse(localStorage.lov)
+
+      function clearAll() {
+       dis.innerHTML =  localStorage.lov = ""
+      }
+    </script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+</body>
+</html>
